@@ -93,7 +93,6 @@ function get_other_inventory_values() {
 
 
 function get_complete_inventory_values () {
-  // Pare down. Factor out getting the other inventory values?
   let tub_inventory_values = get_inventory_section_values("Ice Cream Tubs")
   let pint_inventory_values = get_inventory_section_values("Pre-Packed Pints")
   let other_inventory_values = get_other_inventory_values()
@@ -102,7 +101,6 @@ function get_complete_inventory_values () {
 
 
 function generate_ideal_inventory_section(target_section_scope) {
-  // Pare down.
   let ideal_inventory_section = {}
   let section_range = config_sheet.getRange(target_section_scope)
   let section_values = section_range.getValues()
@@ -146,9 +144,7 @@ function extract_ideal_quantity(ideal_item_entry) {
 
 function calculate_item_deficit(item_values, ideal_inventory_category) {
   let [item_name, item_quantity] = item_values
-
   let ideal_item_entry = ideal_inventory_category[item_name]
-  Logger.log('ln150: ideal_item_entry = ' + ideal_item_entry)
   let ideal_quantity = extract_ideal_quantity(ideal_item_entry)
 
   let replace_threshold = ideal_item_entry['replace_threshold']
@@ -177,7 +173,6 @@ function calculate_shopping_list_by_category(inventory_values, ideal_inventory_c
 }
 
 function calculate_all_shopping_list_categories() {
-  // How to shorten these variable names?
   let [tubs_inventory_values, pint_inventory_values, other_inventory_values] = get_complete_inventory_values()
   let [ideal_tubs_inventory, ideal_pints_inventory, ideal_other_inventory] = generate_complete_ideal_inventory()
   let tubs_shopping_list = calculate_shopping_list_by_category(
@@ -249,13 +244,7 @@ function populate_shopping_list_sheet() {
 
 
 function transfer_tubs_inventory() {
-  // Write a better name for this function.
   let tub_inventory_values = get_inventory_section_values('Ice Cream Tubs')
-  Logger.log(tub_inventory_values)
-
-  // 1.) Gather inventory into proper nested array format.
-  // >>> [[IC_Name, Series, Quantity, Destination]]
-  // b. Seperate values into series.
 }
 
 
